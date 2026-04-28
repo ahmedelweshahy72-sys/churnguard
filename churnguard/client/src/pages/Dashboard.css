@@ -1,0 +1,152 @@
+.dashboard { max-width: 1280px; }
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.page-header h1 { font-size: 28px; color: var(--text); }
+.page-header p { font-size: 14px; margin-top: 4px; }
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+  background: linear-gradient(135deg, rgba(108,99,255,0.06), transparent);
+}
+.stat-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
+.stat-card:hover::before { opacity: 1; }
+
+.stat-icon {
+  width: 44px; height: 44px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.stat-icon.accent { background: rgba(108,99,255,0.15); color: var(--accent); }
+.stat-icon.danger { background: rgba(255,77,109,0.15); color: var(--danger); }
+.stat-icon.warning { background: rgba(255,184,48,0.15); color: var(--warning); }
+.stat-icon.success { background: rgba(0,214,143,0.15); color: var(--success); }
+
+.stat-body { flex: 1; }
+.stat-value { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.1; }
+.stat-label { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+.stat-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+.stat-trend {
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; gap: 2px;
+}
+.stat-trend.up { color: var(--success); }
+.stat-trend.down { color: var(--danger); }
+
+/* Charts */
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.chart-card { padding: 20px; }
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.chart-header h3 { font-size: 15px; font-weight: 600; color: var(--text); }
+
+.chart-tooltip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+.ct-label { color: var(--text-dim); margin-bottom: 4px; font-weight: 600; }
+
+/* CTA */
+.cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px;
+  gap: 14px;
+  border: 1px dashed var(--border-bright);
+}
+.cta-icon {
+  width: 64px; height: 64px;
+  background: rgba(108,99,255,0.12);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+}
+.cta-card h3 { font-size: 20px; }
+.cta-card p { font-size: 14px; max-width: 400px; }
+
+/* Table */
+.results-table-wrap { overflow-x: auto; margin-top: 8px; }
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.results-table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.results-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.results-table tr:last-child td { border-bottom: none; }
+.results-table tr:hover td { background: var(--bg-hover); }
+.mono { font-family: monospace; font-size: 12px; color: var(--text-dim); }
+.text-dim { color: var(--text-dim); }
+
+.prob-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.prob-bar {
+  height: 4px;
+  border-radius: 99px;
+  min-width: 2px;
+  max-width: 80px;
+  flex: 0 0 auto;
+}
